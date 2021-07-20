@@ -27,7 +27,34 @@ O proximo programa consiste em contar em uma imagem o numero de bolhas que possu
 - Apos isso, realiza-se o *floodfill* no ponto (0,0) com alguma cor cinza (utilizou-se 120), visando deixar na cor preta apenas os supostos buracos de algumas bolhas.
 - Em seguida, varre-se a imagem a procura de pixels de cor preta, incrementando o contador de buracos e apagando o mesmo aplicando-se *floodfill* na cor cinza quando encontrado um.
 - Por fim, teremos apenas bolhas sem buracos nesta utlima etapa. Fazendo uma varredura pesquisando a cor branca, podemos incrementar o contador de bolhas sem buracos e realizar o preenchimento naquele pixel usando a cor do contador (labeling classico) quando encontrada esta cor. 
+
 As saidas do [labeling.cpp](/labeling.cpp) obtidas a cada passo a passo sao mostradas abaixo:
+
+![labelingsembordas.png](/labelingsemborda.png "Saida labeling.cpp")
+:--:
+Saida labeling.cpp apos retirar bolhas em todas as bordas
+
+![labelingcinza.png](/labelingcinza.png "Saida labeling.cpp")
+:--:
+Saida labeling.cpp apos aplicar *floodfill* no ponto (0,0)
+
+![labelingsemburacos.png](/labelingsemburacos.png "Saida labeling.cpp")
+:--:
+Saida labeling.cpp apos contar e retirar bolhas com buracos
+
+![labelingfinal.png](/labelingfinal.png "Saida labeling.cpp")
+:--:
+Saida labeling.cpp apos contar e rotular bolhas sem buracos
+
+Como saida de texto, foi obtido:
+```
+$ ./labeling bolhas.png 
+a figura tem 21 bolhas, sendo 14 sem buracos e 7 com buracos
+```
+
+### 4. Equalize
+Utilizando como referencia o programa [histogram.cpp](https://agostinhobritojr.github.io/tutorial/pdi/exemplos/histogram.cpp), foi implementado o [equalize.cpp](/equalize.cpp), sendo responsavel por realizar a equalização do histogram para cada imagem capturada. O mesmo utiliza o a propria funcao *equalizeHist* do proprio *openCV*, alem das funcoes *calcHist* (para calcular o histograma a partir da matriz de uma imagem) e *normalize* (para normalizar o mesmo). Apos isso, sao copiadas as imagens dos dois histogramas (normal e equalizado) nas imagens capturadas. A partir deles, e possivel ver com clareza as suas diferencas, tendo no histograma equalizado uma melhor distribuicao das ocorrencias e portanto um melhor aproveitamento dos tons de cinza. As figuras abaixo foram obtidas a partir do [equalize.cpp](/equalize.cpp):
+
 
 
 
