@@ -16,4 +16,6 @@ Saida regions.cpp
 ### 2. Troca regioes
 O seguinte codigo tem como intuito trocar os quadrantes em diagonal de uma imagem. Ele tambem foi baseado no programa [pixels.cpp](https://agostinhobritojr.github.io/tutorial/pdi/exemplos/pixels.cpp), sendo o funciamento do mesmo possivel gracas a um construtor da classe *Mat* tendo como parametros um objeto *Mat* e um objeto *Rect*, obtendo como resultando apenas a matriz contida naquele retangulo. Assim, foram inicializados quatro objetos *Rect* representando cada um dos quadrantes da imagem original (utizando metade da altura e da largura como divisores) e utilizando o construtor citado foram obtidos as quatro matrizes representando os quadrantes. Por fim, utilizou-se os metodos *vconcat()* e *hconcat()* para juntar os mesmos na ordem desejada. A saida do programa [trocaregioes.cpp](/trocaregioes.cpp) exibida abaixo:
 
-
+![trocaregioessaida.png](/trocaregioessaida.png "Saida trocaregioes.cpp")
+:--:
+Saida trocaregioes.cpp
