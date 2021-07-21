@@ -75,7 +75,13 @@ Saida laplgaus.cpp usando filtro Laplaciano
 Saida laplgaus.cpp usando filtro Laplaciano do Gaussiano
 
 ### 7. Tiltshift
-Utilizando como base o programa [addweighted.cpp](https://agostinhobritojr.github.io/tutorial/pdi/exemplos/addweighted.cpp), foi criado o programa [tiltshift.cpp](/tiltshift.cpp), visando a criacao do efeito *tilt shift* em imagens, sendo uma tecnica muito interessante que permite criar a ilusao de miniaturas. O princípio utilizado para simular uma lente tilt-shift é combinar a imagem original com sua versão borrada, produzindo nas proximidades da borda o efeito do borramento enquanto se mantém na região central a imagem sem borramento. 
+Utilizando como base o programa [addweighted.cpp](https://agostinhobritojr.github.io/tutorial/pdi/exemplos/addweighted.cpp), foi criado o programa [tiltshift.cpp](/tiltshift.cpp), visando a implementacao de uma interface que permite a criacao e configuracao do efeito *tilt-shift* em imagens, sendo uma tecnica muito interessante que possibilita criar a ilusao de miniaturas. O princípio utilizado para simular uma lente *tilt-shift* é combinar a imagem original com sua versão borrada, produzindo nas proximidades da borda o efeito do borramento enquanto se mantém na região central a imagem sem borramento. Assim, foi definida uma funcao α(x), representando a regiao de defoque ao longo do eixo vertical, utilizando valores de altura da regiao variaveis definidos pelo usuario atraves de sliders, podendo ser escolhida tambem a posicao vertical e a forca de decaimento dessa funcao de ponderamento. Atraves da funcao *multiply* ,do *openCV*, e possivel multiplicar a imagem original por α(x) e a imagem borrada (utilizou-se 10 filtros da media) por 1 - α(x), obtendo atraves da combinação linear dessas duas imagens o efeito simulado de *tilt-shift*. As imagens a seguir mostram o antes e depois de uma imagem modificada pelo [tiltshift.cpp](/tiltshift.cp).
 
+![paisagem.png](/paisagem.png "Entrada tiltshift.cpp")
+:--:
+Entrada tiltshift.cpp
 
+![tiltshiftsaida.png](/tiltshift.png "Saida tiltshift.cpp")
+:--:
+Saida tiltshift.cpp apos ajuste nos sliders
 
