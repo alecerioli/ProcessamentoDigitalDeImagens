@@ -28,7 +28,7 @@ O proximo programa consiste em contar em uma imagem o numero de bolhas que possu
 - Em seguida, varre-se a imagem a procura de pixels de cor preta, incrementando o contador de buracos e apagando o mesmo aplicando-se *floodfill* na cor cinza quando encontrado um.
 - Por fim, teremos apenas bolhas sem buracos nesta utlima etapa. Fazendo uma varredura pesquisando a cor branca, podemos incrementar o contador de bolhas sem buracos e realizar o preenchimento naquele pixel usando a cor do contador (labeling classico) quando encontrada esta cor. 
 
-As saidas do [labeling.cpp](/labeling.cpp) obtidas a cada passo a passo sao mostradas abaixo:
+As saidas do nosso [labeling.cpp](/labeling.cpp) obtidas a cada passo a passo sao mostradas abaixo:
 
 ![labelingsembordas.png](/labelingsemborda.png "Saida labeling.cpp")
 :--:
@@ -53,8 +53,29 @@ a figura tem 21 bolhas, sendo 14 sem buracos e 7 com buracos
 ```
 
 ### 4. Equalize
-Utilizando como referencia o programa [histogram.cpp](https://agostinhobritojr.github.io/tutorial/pdi/exemplos/histogram.cpp), foi implementado o [equalize.cpp](/equalize.cpp), sendo responsavel por realizar a equalização do histogram para cada imagem capturada. O mesmo utiliza o a propria funcao *equalizeHist* do proprio *openCV*, alem das funcoes *calcHist* (para calcular o histograma a partir da matriz de uma imagem) e *normalize* (para normalizar o mesmo). Apos isso, sao copiadas as imagens dos dois histogramas (normal e equalizado) nas imagens capturadas. A partir deles, e possivel ver com clareza as suas diferencas, tendo no histograma equalizado uma melhor distribuicao das ocorrencias e portanto um melhor aproveitamento dos tons de cinza. As figuras abaixo foram obtidas a partir do [equalize.cpp](/equalize.cpp):
+Utilizando como referencia o programa [histogram.cpp](https://agostinhobritojr.github.io/tutorial/pdi/exemplos/histogram.cpp), foi implementado o [equalize.cpp](/equalize.cpp), sendo responsavel por realizar a equalização do histogram para cada imagem capturada. O mesmo utiliza o a funcao *equalizeHist* do proprio *openCV*, alem das funcoes *calcHist* (para calcular o histograma a partir da matriz de uma imagem) e *normalize* (para normalizar o mesmo). Apos isso, sao copiadas as imagens dos dois histogramas (normal e equalizado) nas imagens capturadas. A partir deles, e possivel ver com clareza as suas diferencas, tendo no histograma equalizado uma melhor distribuicao das ocorrencias e portanto um melhor aproveitamento dos tons de cinza. As figuras abaixo foram obtidas a partir do [equalize.cpp](/equalize.cpp):
 
+### 5. Motion detector
+O seguinte programa [motiondetector.cpp](/motiondetector.cpp) serve para detectar movimento atraves de uma camera. Para o desenvolvimento do mesmo, utilizou-se a ideia de que, atraves de continuas comparacoes entre o histograma do frame atual e do frame passado, pode-se determinar se houve movimento a partir dessa diferenca e considerando-se um limiar pre estabelecido. Passando para o codigo primeiramente utilizamos a mesma estrategia do [histogram.cpp](https://agostinhobritojr.github.io/tutorial/pdi/exemplos/histogram.cpp) para montar o histograma, sempre tendo dois armazenados (o atual e o anterior). Assim, utilizando a funcao *compareHist* do proprio *openCV*, e possivel obter a quantidade de variacoes entre os dois frames, que se for maior que um limite estabelecido no valor 10 fara a tela piscar na cor branca, copiando para a tela principal um retangulo do tamanho da tela nessa cor, evidenciando que foi detectado algum movimento.
+
+### 6. Laplgauss
+A partir do codigo [filtroespacial.cpp](https://agostinhobritojr.github.io/tutorial/pdi/exemplos/filtroespacial.cpp) foi adicionada mais uma mascara, representando o filtro Laplaciano do Gaussiano para frames capturados por uma camera. Assim, nao houve grandes alteracoes na estrutura do codigo, apenas a adicao da mascara do filtro em questao dada pela linha de codigo abaixo:
+
+```c++
+float laplaciangauss[] = {1, 1, 1, 1, -8, 1, 1, 1, 1};
+```
+Alem disso, foi criada uma nova opcao de tecla (no caso, a tecla 's'), que ira corresponder a essa nova mascara criada. A partir disso, foi possivel ver diferencas claras entre esse filtro com a simples aplicacao do filtro Laplaciano, tendo nesse ultimo uma marcacao de bordas menos evidente se comparada com o Lapliaciano do Gaussiano, filtro que define muito mais as bordas. As imagens abaixo obtidas a partir do programa [laplgauss.cpp](/laplgauss.cpp) comprovam essa ideia:
+
+![laplacian.png](/laplacian.png "Saida laplgaus.cpp")
+:--:
+Saida laplgaus.cpp usando filtro Laplaciano
+
+![laplaciangauss.png](/laplaciangauss.png "Saida laplgaus.cpp")
+:--:
+Saida laplgaus.cpp usando filtro Laplaciano do Gaussiano
+
+### 7. Tiltshift
+Utilizando como base o programa [addweighted.cpp](https://agostinhobritojr.github.io/tutorial/pdi/exemplos/addweighted.cpp), foi criado o programa [tiltshift.cpp](/tiltshift.cpp), visando a criacao do efeito *tilt shift* em imagens, sendo uma tecnica muito interessante que permite criar a ilusao de miniaturas. O princípio utilizado para simular uma lente tilt-shift é combinar a imagem original com sua versão borrada, produzindo nas proximidades da borda o efeito do borramento enquanto se mantém na região central a imagem sem borramento. 
 
 
 
