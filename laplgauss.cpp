@@ -20,7 +20,7 @@ int main(int, char **) {
   float vertical[] = {-1, -2, -1, 0, 0, 0, 1, 2, 1};
   float laplacian[] = {0, -1, 0, -1, 4, -1, 0, -1, 0};
   float boost[] = {0, -1, 0, -1, 5.2, -1, 0, -1, 0};
-  float laplaciangauss[] = {-1, -1, -1, -1, 8, -1, -1, -1, -1};
+  float laplaciangauss[] = {1, 1, 1, 1, -8, 1, 1, 1, 1};
 
   cv::Mat frame, framegray, frame32f, frameFiltered;
   cv::Mat mask(3, 3, CV_32F);

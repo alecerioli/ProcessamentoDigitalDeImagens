@@ -6,7 +6,6 @@ using namespace std;
 
 int main(int argc, char** argv){
   cv::Mat image;
-  cv::Vec3b val;
 
   int p1x, p1y, p2x, p2y;
 
@@ -30,6 +29,7 @@ int main(int argc, char** argv){
     }
 
     cv::imshow("janela", image);  
+    cv::imwrite("regionssaida.png", image);
     cv::waitKey();
   }
   else{

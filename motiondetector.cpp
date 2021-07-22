@@ -7,7 +7,7 @@ int main(int argc, char** argv){
   cv::VideoCapture cap;
   cv::Mat histAtual, histPassado;
 
-  double limite = 5;
+  double limite = 10;
   int nbins = 64;
   float range[] = {0, 255};
   const float *histrange = { range };
@@ -50,10 +50,10 @@ int main(int argc, char** argv){
 
     double diferenca = compareHist(histAtual, histPassado, 1);
 
-    if((diferenca - limite) > limite && (diferenca-limite) < 1000){
+    if((diferenca > limite) && (diferenca < 1000)){
         cv::Mat branco(height, width, CV_8UC1, 255);
         branco.copyTo(image(cv::Rect(0,0,width,height)));
-        std::cout << "Movimento detectado\n" << (diferenca - limite) << std::endl;
+        std::cout << "Movimento detectado\n" << diferenca << std::endl;
     }
     
     histAtual.copyTo(histPassado);

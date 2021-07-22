@@ -32,6 +32,7 @@ int main(int argc, char** argv){
   while(1){
     cap >> image;
     cv::cvtColor(image, image, cv::COLOR_RGB2GRAY);
+    cv::flip(image,image,1);
     cv::equalizeHist(image, imageEq);
 
     cv::calcHist(&image, 1, 0, cv::Mat(), hist, 1,
@@ -64,5 +65,6 @@ int main(int argc, char** argv){
     key = cv::waitKey(30);
     if(key == 27) break;
   }
+  cv::imwrite("equalizesaida.png",image);
   return 0;
 }

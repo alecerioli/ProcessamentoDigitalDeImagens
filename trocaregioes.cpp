@@ -34,6 +34,7 @@ int main(int argc, char **argv)
     hconcat(CD, AB, image);
 
     imshow("janela", image);
+    imwrite("trocarregioessaida.png", image);
     waitKey();
 
     return 0;

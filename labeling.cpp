@@ -53,12 +53,14 @@ int main(int argc, char** argv){
   }
 
   cv::imshow("image", image);
+  cv::imwrite("labelingsemborda.png", image);
   cv::waitKey();
   
   p.x = 0;
   p.y = 0;
   floodFill(image, p, 120);
   imshow("image", image);
+  cv::imwrite("labelingcinza.png", image);
   waitKey();
   
   for (int i = 0; i < height; i++){
@@ -77,6 +79,7 @@ int main(int argc, char** argv){
     }
   }
   imshow("image", image);
+  cv::imwrite("labelingsemburacos.png", image);
   waitKey();
 
   // encontrando regioes
@@ -86,34 +89,15 @@ int main(int argc, char** argv){
         nobjects++;
         p.x = j;
         p.y = i;
-        floodFill(image, p, nobjects*15);
+        floodFill(image, p, nobjects);
       }
     }
   }
   imshow("image", image);
-  std::cout << "a figura tem " << nobjects << " bolhas ";
-  std::cout << "com " << nburacos << " buracos" << std::endl;
+  cv::imwrite("labelingfinal.png", image);
+  std::cout << "a figura tem " << nobjects + nburacos << " bolhas, sendo " 
+  << nobjects << " sem buracos e " << nburacos << " com buracos" << std::endl;
   waitKey();
-  
-  // busca objetos presentes
-  /*nobjects=0;
-  for(int i=0; i<height; i++){
-    for(int j=0; j<width; j++){
-      if(image.at,<uchar>(ij) == 255){
-        // achou um objeto
-        nobjects++;
-        p.x=j;
-        p.y=i;
-  		// preenche o objeto com o contador
-		  cv::floodFill(image,p,nobjects);
-      }
-    }
-  }
-  std::cout << "a figura tem " << nobjects << " bolhas\n";
-  cv::equalizeHist(image, realce);
-  cv::imshow("image", image);
-  cv::imshow("realce", realce);
-  cv::imwrite("labeling.png", image);
-  cv::waitKey();*/
+
   return 0;
 }
