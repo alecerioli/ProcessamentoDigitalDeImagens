@@ -1,6 +1,8 @@
 # Processamento Digital de Imagens
 Este repositorio será utilizado para expor as atividades praticas desenvolvidas durante a disciplina DCA0445 - PROCESSAMENTO DIGITAL DE IMAGENS - UFRN.
 
+[Primeira Unidade](## Primeira Unidade)
+
 ## Primeira Unidade
 Os codigos referenciados no decorrer desta unidade foram obtidos a partir da [pagina pessoal do Professor Agostinho Brito](https://agostinhobritojr.github.io/tutorial/pdi/). Para a compilação dos codigos apresentados a seguir, será necessario possuir o arquivo [Makefile](/Makefile) no mesmo diretorio dos programas, podendo ser compilados e executados usando os seguintes comandos:
 ```
