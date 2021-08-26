@@ -142,4 +142,8 @@ kmeans(samples,
 		 centros[i]);
 ```
 Por fim, a cada iteracao o resultado e gravado em uma imagem diferente, sendo utilizadas as 10 imagens resultantes para criar a animacao abaixo, mostrando a diferenca entre cada uma devido a inicializacao randomica dos centros, fazendo com que o algoritmo caminhe em direcoes diferentes devido a unica rodada utilizada e a caracteristica nao-determinista do algoritmo.
-![Saida kmeansrandom.cpp](kmeans.gif)
+
+![kmeans.gif](kmeans.gif "Saida kmeansrandom.cpp")
+:--:
+Saida kmeansrandom.cpp
+
