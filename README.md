@@ -118,3 +118,5 @@ Entrada homomorfico.cpp
 ![homomorficosaida.png](/homomorficosaida.png "Saida homomorfico.cpp")
 :--:
 Saida homomorfico.cpp
+
+### 10. Canny Points
