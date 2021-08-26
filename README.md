@@ -129,3 +129,17 @@ Saida pontilhismo.cpp
 ![canny.png](/canny.png "Saida canny.cpp")
 :--:
 Saida canny.cpp
+
+### 11. Kmeansrandom
+A partir do programa exemplo [kmeans.cpp](https://agostinhobritojr.github.io/tutorial/pdi/exemplos/kmeans.cpp), foi criado o programa [kmeansrandom.cpp](/kmeansrandom.cpp), que tem como intuito utilizar apenas uma rodada do algoritmo *Kmeans* e inicializar os centros de forma randomica, comparando 10 resultados. Para tanto, utilizou-se um ponteiro para rotulos e um para centros (cada um com 10 elementos) e a funcao *Kmeans()* sera chamada em um loop de 10 iteracoes, como mostrado no trecho de codigo abaixo:
+```c++
+kmeans(samples,
+		 nClusters,
+		 rotulos[i],
+		 TermCriteria(cv::TermCriteria::MAX_ITER|cv::TermCriteria::EPS, 10000, 0.0001),
+		 nRodadas,
+		 KMEANS_RANDOM_CENTERS,
+		 centros[i]);
+```
+Por fim, a cada iteracao o resultado e gravado em uma imagem diferente, sendo utilizadas as 10 imagens resultantes para criar a animacao abaixo, mostrando a diferenca entre cada uma devido a inicializacao randomica dos centros, fazendo com que o algoritmo caminhe em direcoes diferentes devido a unica rodada utilizada e a caracteristica nao-determinista do algoritmo.
+![Saida kmeansrandom.cpp](kmeans.gif)
