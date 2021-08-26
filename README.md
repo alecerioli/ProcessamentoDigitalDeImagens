@@ -122,7 +122,7 @@ Saida homomorfico.cpp
 ### 10. Canny Points
 O programa a seguir consiste na utilizacao das bordas produzidas pelo algoritmo de Canny para melhorar a qualidade do pontilhismo. Os programas [canny.cpp](https://agostinhobritojr.github.io/tutorial/pdi/exemplos/canny.cpp) e [pontilhismo.cpp](https://agostinhobritojr.github.io/tutorial/pdi/exemplos/pontilhismo.cpp) foram usados como base. Para isso, utiliza-se duas chamadas do aloritmo de Canny, guradando em dois vetores diferentes um borda mais forte e uma mais fraca (a segunda chamada do Canny utiliza dois limiares sendo o dobro dos primeiros dois limiares). Apos isso, percorre-se a imagem original separando as coordenadas em bordas fortes (bestEdge) e fracas (Edges). Por fim, todos os vetores sao embaralhados e desenha-se circulos grande na imagem toda, circulos um pouco menores nas bordas fracas e circulos pequenos nas bordas fortes. A saida do programa [cannypoints.cpp](/cannypoints.cpp), ajustando os primeiros limiares manualmente por um slider (relacao de 1/3) e mostrada na figura abaixo:
 
-![pontos.jpg](/pontos.png "Saida pontilhismo.cpp")
+![pontos.jpg](/pontos.jpg "Saida pontilhismo.cpp")
 :--:
 Saida pontilhismo.cpp
 
