@@ -1,5 +1,6 @@
 # Processamento Digital de Imagens
 Este repositorio será utilizado para expor as atividades praticas desenvolvidas durante a disciplina DCA0445 - PROCESSAMENTO DIGITAL DE IMAGENS - UFRN.
+
 ## Primeira Unidade
 Os codigos referenciados no decorrer desta unidade foram obtidos a partir da [pagina pessoal do Professor Agostinho Brito](https://agostinhobritojr.github.io/tutorial/pdi/). Para a compilação dos codigos apresentados a seguir, será necessario possuir o arquivo [Makefile](/Makefile) no mesmo diretorio dos programas, podendo ser compilados e executados usando os seguintes comandos:
 ```
@@ -100,3 +101,20 @@ cv::VideoWriter captured;
 captured.open("tiltshiftvideo.avi", cv::VideoWriter::fourcc('M','J','P','G'), 10, cv::Size(width,height));
 ```
 Além disso, um em cada dois frames será descartado, evidenciando o efeito *stop motion* comum neste tipo de videos. Por fim, utilizamos a função *release()*, liberando o objeto processado.
+
+## Segunda Unidade
+Os codigos utilizados como base no decorrer desta unidade tambem foram obtidos a partir da [pagina pessoal do Professor Agostinho Brito](https://agostinhobritojr.github.io/tutorial/pdi/). Para a compilação dos codigos apresentados a seguir, será necessario possuir o arquivo [Makefile](/Makefile) no mesmo diretorio dos programas, podendo ser compilados e executados usando os seguintes comandos:
+```
+$ make <nome_programa>
+$ ./<nome_programa> <arquivo_de_entrada>
+```
+### 9. Homomorfico
+O codigo [homomorfico.cpp](/homomorfico.cpp) permite melhorar imagens em tons de cinza com iluminacao irregular atraves do ajuste de alguns parametros. Ele foi desenvolvido a partir do programa [dft.cpp](https://agostinhobritojr.github.io/tutorial/pdi/exemplos/dft.cpp), sendo utilizada a mesma funcao *deslocaDFT*. O programa primeiramente ira realizar um padding na imagem de entrada, calculando a resulacao adequada a partir da funcao *getOptimalDFTSize()*. Apos isso, a partir de qualquer alteracao de um dos sliders representando os 4 parametros (Gamma Low, Gamma High, C e Frequencia de corte), o metodo *applyFilter()* sera chamado para os novos valores dos parametros. Nele, vai haver o calculo da DFT (apos somar mais um a todos os pixels para caluclo do logaritmo), o deslocamento da mesma, a normalizacao do espectro e a chamada da funcao *homomorphico*. Nela vai haver o calculo do filtro em si, utilizando a respectiva equacao, e o mesmo sera multiplicado com a DFT da imagem, obtendo o resultado aplicando a DFT inversa. O melhoramento de uma imagem com iluminacao pessima utilizando o programa [homomorfico.cpp](/homomorfico.cpp) e mostrado nas imagens abaixo, apos ajuste manual dos parametros:
+
+![semiluminacao.png](/semiluminacao.png "Entrada homomorfico.cpp")
+:--:
+Entrada homomorfico.cpp
+
+![homomorficosaida.png](/homomorficosaida.png "Saida homomorfico.cpp")
+:--:
+Saida homomorfico.cpp
